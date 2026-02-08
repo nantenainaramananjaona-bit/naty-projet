@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <!-- Meta de secours pour PWABuilder -->
     <title>JIRAMA Relevés PRO</title>
     <meta name="description" content="Application professionnelle de relevés de consommation JIRAMA pour techniciens de maintenance.">
     
-    <!-- Meta tags pour PWA/APK -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#2563eb">
     
-    <!-- Lien vers le Manifest (Chemin explicite pour PWABuilder) -->
     <link rel="manifest" href="./manifest.json">
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3105/3105807.png">
+    
+    <!-- Correction 404 CSS -->
+    <link rel="stylesheet" href="./index.css">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     
+    <!-- Babel Standalone : Indispensable pour exécuter du .tsx sur GitHub Pages sans compilation préalable -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -37,30 +40,31 @@
     <script type="importmap">
     {
       "imports": {
-        "react/": "https://esm.sh/react@^19.2.4/",
-        "react": "https://esm.sh/react@^19.2.4",
-        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-        "framer-motion": "https://esm.sh/framer-motion@^12.33.0",
-        "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
-        "jspdf": "https://esm.sh/jspdf@^4.1.0"
+        "react/": "https://esm.sh/react@19.0.0/",
+        "react": "https://esm.sh/react@19.0.0",
+        "react-dom/": "https://esm.sh/react-dom@19.0.0/",
+        "framer-motion": "https://esm.sh/framer-motion@11.11.17",
+        "lucide-react": "https://esm.sh/lucide-react@0.460.0",
+        "jspdf": "https://esm.sh/jspdf@2.5.2"
       }
     }
     </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
+    
+    <!-- Utilisation de Babel pour charger le point d'entrée TSX -->
+    <script type="text/babel" data-type="module" data-presets="typescript,react" src="./index.tsx"></script>
+    
     <script>
-      // Service Worker (Obligatoire pour APK)
+      // Service Worker (Optionnel pour le debug, indispensable pour PWA)
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
+          navigator.serviceWorker.register('./sw.js', { scope: './' })
             .then(reg => console.log('SW Ready'))
             .catch(err => console.log('SW Error', err));
         });
       }
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
