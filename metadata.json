@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Copy of JIRAMA Relevés",
+  "description": "Application de relevé de consommation d'eau et d'électricité pour les techniciens de maintenance JIRAMA.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

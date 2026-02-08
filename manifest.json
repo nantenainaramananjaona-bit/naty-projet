@@ -1,0 +1,30 @@
+{
+  "lang": "fr",
+  "name": "JIRAMA Relevés PRO",
+  "short_name": "JIRAMA",
+  "description": "Application professionnelle de relevés de consommation JIRAMA pour techniciens de maintenance.",
+  "id": "com.jirama.releves.pro",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "scope": "./",
+  "background_color": "#f8fafc",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3105/3105807.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3105/3105807.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["business", "utilities"],
+  "dir": "ltr",
+  "prefer_related_applications": false
+}
