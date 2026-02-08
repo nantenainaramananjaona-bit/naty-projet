@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -16,17 +15,16 @@ import {
   FolderOpen,
   HardDrive,
   FileSearch,
-  Check,
   FolderSync,
   Play,
   Download
 } from 'lucide-react';
-import { SplashScreen } from './components/SplashScreen';
-import { ReadingForm } from './components/ReadingForm';
-import { ReadingHistory } from './components/ReadingHistory';
-import { PermissionsScreen } from './components/PermissionsScreen';
-import { Reading } from './types';
-import { storageService } from './services/storageService';
+import { SplashScreen } from './components/SplashScreen.tsx';
+import { ReadingForm } from './components/ReadingForm.tsx';
+import { ReadingHistory } from './components/ReadingHistory.tsx';
+import { PermissionsScreen } from './components/PermissionsScreen.tsx';
+import { Reading } from './types.ts';
+import { storageService } from './services/storageService.ts';
 
 enum View {
   SPLASH,
@@ -46,20 +44,16 @@ const App: React.FC = () => {
     return (localStorage.getItem('jirama_theme_mode') as ThemeMode) || 'light';
   });
 
-  // PWA Install Prompt state
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isInstalled, setIsInstalled] = useState(false);
 
-  // Emplacements de stockage
   const [backupPath, setBackupPath] = useState(() => localStorage.getItem('jirama_backup_path') || '/Documents/JIRAMA/Backup');
   const [pdfPath, setPdfPath] = useState(() => localStorage.getItem('jirama_pdf_path') || '/Download/JIRAMA/Rapports');
   const [isConfiguring, setIsConfiguring] = useState<'backup' | 'pdf' | null>(null);
 
-  // Draft management
   const [draft, setDraft] = useState<Reading | null>(null);
 
   useEffect(() => {
-    // Listen for install prompt
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
@@ -70,7 +64,6 @@ const App: React.FC = () => {
       setDeferredPrompt(null);
     });
 
-    // Check if already in standalone mode
     if (window.matchMedia('(display-mode: standalone)').matches) {
       setIsInstalled(true);
     }
@@ -173,7 +166,6 @@ const App: React.FC = () => {
             </header>
             
             <div className="max-w-xl mx-auto space-y-6">
-              {/* Install Card (PWA to APK experience) */}
               {!isInstalled && deferredPrompt && (
                 <div className="bg-blue-600 p-8 rounded-[2.5rem] shadow-2xl shadow-blue-600/30 text-white overflow-hidden relative">
                    <div className="relative z-10">
