@@ -1,0 +1,8 @@
+/* Fichier généré pour éviter l'erreur 404 au chargement du site */
+:root {
+  --primary-blue: #2563eb;
+}
+
+#root {
+  min-height: 100vh;
+}
